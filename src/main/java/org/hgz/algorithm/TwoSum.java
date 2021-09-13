@@ -2,27 +2,30 @@ package org.hgz.algorithm;
 
 import com.alibaba.fastjson.JSON;
 
+import java.util.Arrays;
+import java.util.HashMap;
+
 public class TwoSum {
 
     public static int[] twoSum(int[] nums, int target) {
-        int l = 0;
-        int r = nums.length -1;
-        while(l < r) {
-            if (nums[l] + nums[r] == target) {
-                return new int[] {l +1, r +1};
+        int[] result = new int[2];
+
+        HashMap<Integer, Integer> hashMap = new HashMap<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            if (hashMap.containsKey(nums[i])) {
+                result[0] = hashMap.get(nums[i]);
+                result[1] = i;
+                return result;
             }
-            if (nums[l] + nums[r] > target) {
-                r --;
-            } else {
-                l ++;
-            }
+            hashMap.put(target - nums[i], i);
         }
-        return new int[]{};
+        return result;
     }
 
     public static void main(String[] args) {
-        int[] nums = {2,7,11,15};
-        int target = 9;
+        int[] nums = {3, 2, 4};
+        int target = 6;
 
         int[] ints = twoSum(nums, target);
         System.out.println(JSON.toJSONString(ints));
