@@ -1,8 +1,7 @@
-package org.hgz.algorithm;
+package org.hgz.algorithm.array;
 
 import com.alibaba.fastjson.JSON;
 
-import java.util.Arrays;
 import java.util.HashMap;
 
 public class TwoSum {
