@@ -1,4 +1,4 @@
-package org.hgz.algorithm;
+package org.hgz.algorithm.base;
 
 import com.sun.tools.javac.util.Assert;
 
