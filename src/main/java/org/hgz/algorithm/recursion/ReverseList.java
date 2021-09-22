@@ -1,4 +1,4 @@
-package org.hgz.algorithm.recursive;
+package org.hgz.algorithm.recursion;
 
 import org.hgz.algorithm.list.ListNode;
 
