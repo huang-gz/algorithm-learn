@@ -1,7 +1,6 @@
 package org.hgz.algorithm.sort;
 
 import com.alibaba.fastjson.JSON;
-import com.sun.org.apache.bcel.internal.generic.SWAP;
 import org.hgz.algorithm.utils.SwapUtil;
 
 public class InsertionSort {
