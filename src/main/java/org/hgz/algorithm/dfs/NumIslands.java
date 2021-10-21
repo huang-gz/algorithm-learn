@@ -1,4 +1,4 @@
-package dfs;
+package org.hgz.algorithm.dfs;
 
 public class NumIslands {
 
