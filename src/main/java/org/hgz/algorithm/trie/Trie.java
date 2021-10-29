@@ -1,6 +1,5 @@
 package org.hgz.algorithm.trie;
 
-import com.sun.tools.javac.util.Assert;
 
 /**
  * https://leetcode-cn.com/problems/implement-trie-prefix-tree
@@ -64,8 +63,6 @@ public class Trie {
         Trie trie1 = trie.searchPrefix("abc");
 
         boolean abc = trie.search("abc");
-        Assert.checkNonNull(trie1);
-        Assert.check(abc);
 
 
     }
