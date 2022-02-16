@@ -1,11 +1,13 @@
 package org.hgz.algorithm.recursion;
 
 import com.alibaba.fastjson.JSON;
+import com.sun.xml.internal.ws.api.model.wsdl.editable.EditableWSDLService;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.IntStream;
 
 /**
  * https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/submissions/
@@ -17,15 +19,15 @@ public class LetterCombinations {
     public List<String> letterCombinations(String digits) {
         List<String> combinations = new ArrayList<>();
 
-        if (digits.length() == 0) {
+        if (digits == null || digits.length() == 0) {
             return combinations;
         }
-
-        // 构建映射表
         Map<Character, String> phoneMap = buildPhoneMap();
+
 
         recur(digits, 0, phoneMap, "", combinations);
         return combinations;
+
     }
 
     private void recur(String digits, int level, Map<Character, String> phoneMap, String s, List<String> combinations) {
@@ -33,15 +35,14 @@ public class LetterCombinations {
             combinations.add(s);
             return;
         }
-
         char c = digits.charAt(level);
+        String s1 = phoneMap.get(c);
 
-        String letters = phoneMap.get(c);
-
-        for (int i = 0; i < letters.length(); i++) {
-            // drill down
-            recur(digits, level + 1 , phoneMap, s + String.valueOf(letters.charAt(i)), combinations);
+        for (int i = 0; i < s1.length(); i++) {
+            recur(digits, level+1, phoneMap, s + String.valueOf(s1.charAt(i)), combinations);
         }
+
+
     }
 
 

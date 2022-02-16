@@ -1,7 +1,6 @@
 package org.hgz.algorithm.trie;
 
 import com.sun.tools.javac.util.Assert;
-import jdk.nashorn.internal.runtime.regexp.joni.constants.internal.TargetInfo;
 
 import java.text.CharacterIterator;
 

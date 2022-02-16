@@ -19,6 +19,7 @@ public class ThreeSum {
 
 
         for (int i = 0; i < nums.length ; i++) {
+            // 如果存在相同的数则略过
             if (i > 0 && nums[i] == nums[i - 1]) {
                 continue;
             }
