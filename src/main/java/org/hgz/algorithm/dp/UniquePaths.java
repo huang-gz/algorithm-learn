@@ -25,9 +25,26 @@ public class UniquePaths {
     }
 
 
+    public int uniquePaths1(int m, int n) {
+        int[] f = new int[n];
+
+        f[0] = 1;
+
+        for(int i = 0; i < m; i++) {
+            for(int j = 1; j < n; j++) {
+                f[j] += f[j - 1];
+            }
+        }
+
+        return f[n -1];
+
+    }
+
+
+
     public static void main(String[] args) {
         UniquePaths uniquePaths = new UniquePaths();
-        int i = uniquePaths.uniquePaths(2, 2);
+        int i = uniquePaths.uniquePaths1(4, 4);
         System.out.println(i);
     }
 

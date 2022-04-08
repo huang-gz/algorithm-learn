@@ -2,13 +2,10 @@ package org.hgz.algorithm.dp;
 
 /**
  * https://leetcode-cn.com/problems/unique-paths-ii/
- *
- *
+ * <p>
+ * <p>
  * 可以转换成分治问题, 最近最简重复性
  * 自顶向下是分治递归
- *
- *
- *
  */
 public class UniquePathsWithObstacles {
 
@@ -37,18 +34,18 @@ public class UniquePathsWithObstacles {
 
         boolean rowZero = false;
         for (int i = columnCount - 1; i >= 0; i--) {
-            if (obstacleGrid[rowCount -1 ][i] == 1 || rowZero) {
-                opt[rowCount -1][i] = 0;
+            if (obstacleGrid[rowCount - 1][i] == 1 || rowZero) {
+                opt[rowCount - 1][i] = 0;
                 rowZero = true;
             } else {
-                opt[rowCount -1][i] = 1;
+                opt[rowCount - 1][i] = 1;
             }
         }
 
 
-        for (int row = rowCount - 2; row >=0 ; row--) {
+        for (int row = rowCount - 2; row >= 0; row--) {
 
-            for(int column = columnCount - 2; column >= 0; column --) {
+            for (int column = columnCount - 2; column >= 0; column--) {
                 if (obstacleGrid[row][column] == 1) {
                     opt[row][column] = 0;
                 } else {
@@ -61,10 +58,42 @@ public class UniquePathsWithObstacles {
     }
 
 
+    /**
+     * 不同路径问题
+     *
+     * @param obstacleGrid
+     * @return
+     */
+    public int uniquePathsWithObstacles2(int[][] obstacleGrid) {
+
+        int n = obstacleGrid.length;
+        int m = obstacleGrid[0].length;
+
+        int[] f = new int[m];
+        f[0] = obstacleGrid[0][0] == 0 ? 1 : 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if(obstacleGrid[i][j] == 1) {
+                    f[j] = 0;
+                    continue;
+                }
+
+                if (j -1 >=0 && obstacleGrid[i][j-1] == 0) {
+                    f[j] += f[j-1];
+                }
+            }
+        }
+
+        return f[f.length-1];
+
+
+    }
+
+
     public static void main(String[] args) {
-        int[][] obstacleGrid = new int[][] {{0,0},{0,1}};
+        int[][] obstacleGrid = new int[][]{{0, 0}, {0, 0}};
         UniquePathsWithObstacles uniquePathsWithObstacles = new UniquePathsWithObstacles();
-        int i = uniquePathsWithObstacles.uniquePathsWithObstacles(obstacleGrid);
+        int i = uniquePathsWithObstacles.uniquePathsWithObstacles2(obstacleGrid);
         System.out.println(i);
     }
 
